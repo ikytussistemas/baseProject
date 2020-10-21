@@ -1,0 +1,76 @@
+<div class="card">
+  <div class="page-top sombra">
+    Cadastro de Exercicio
+    <button class="btn btn-warning btn-pdr btn-sm float-right sombra-btn" (click)="return()" title="voltar">
+      <i class="fas fa-arrow-circle-left"></i>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="col-xs-12 col-md-12">
+      <div class="row justify-content-center">
+        <div class="text-center col-xs-12 col-md-3" *ngIf="object !== undefined">
+          <img [src]="object.urlImg || './../../../../../assets/img/prod.jpg'" class="img-fluid img-thumbnail"
+            style="width: 150px;" />
+        </div>
+
+        <div class="col-xs-12 col-md-9">
+          <form [formGroup]="formulario" (ngSubmit)="onSubmit(); $event.preventDefault()"
+            *ngIf="formulario !== undefined">
+            <div class="col-xs-12">
+              <div class="row">
+
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input id="name" type="text" class="form-control" formControlName="name" IkUpCase/>
+                    <valid-msg [control]="formulario.controls['name']"></valid-msg>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                  <div class="form-group">
+                    <label for="target" class="control-label">Alvo</label>
+                    <select class="form-control" id="status" formControlName="target">
+                      <option *ngFor="let alvo of alvos" [value]="alvo.value">{{ alvo.desc }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <textarea id="description" type="text" class="form-control" formControlName="description" rows="8" ikUpCase ></textarea>
+                    <valid-msg [control]="formulario.controls['description']"></valid-msg>
+                  </div>
+                </div>
+
+              </div>
+              <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
+              <hr style="margin: 2px;" />
+              <div class="row toolbar">
+                <div class="col-sm-1" style="padding: 2px;">
+                  <button class="fileUpload btn btn-outline-primary btn-block border-l toolbar-btn">
+                    <input type="file" class="upload" accept="image/*" (change)="onPhoto($event)"
+                      *ngIf="object !== undefined" />
+                    <i class="fas fa-cloud-upload-alt"></i>
+                  </button>
+                </div>
+
+                <div class="col-sm-10" style="padding: 2px;"></div>
+
+                <div class="col-sm-1" style="padding: 2px;" *ngIf="auth.getPermission('ROLE_DIR') || auth.getPermission('ROLE_COORDPEDAG')">
+                  <button type="submit" class="btn btn-outline-success btn-block border-r toolbar-btn"
+                    [disabled]="!formulario.valid">
+                    <span class="d-none d-md-inline"></span>
+                    <i class="fas fa-save"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

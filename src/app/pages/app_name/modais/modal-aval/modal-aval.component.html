@@ -1,0 +1,164 @@
+
+<div class="modal fade" id="avaliations" tabindex="-1" role="dialog" aria-labelledby="altModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="altModalLabel">Avaliações Cadastradas</h5>
+        <button type="button" class="btn btn-sm btn-primary btn-plus sombra-btn" (click)="addAvaliacao()" *ngIf="permission()">
+          <i class="fas fa-plus"></i>
+        </button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped table-bordered table-sm" *ngIf="avaliacoes !== undefined">
+          <thead>
+            <tr>
+              <th>Data Avaliação</th>
+              <th>Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of avaliacoes">
+              <td data-label="Data Avaliação:">{{ item.dataavaliacao | date:'shortDate' }}</td>
+              <td>
+                <a class="componentform">
+                  <button type="button" class="btn btn-outline-success sombra-btn" title="Detalhes"
+                    (click)="setAvaliacao(item)" data-toggle="modal" data-target="#detalhes">
+                    <i class="fas fa-list"></i>
+                  </button>
+                </a>
+                <a class="componenteform">
+                  <button type="button" class="btn btn-outline-danger sombra-btn" title="Deletar"
+                    data-placement="bottom" (click)="deleteAvaliacao(item, 'a avaliação de: ' + item.dataavaliacao)" *ngIf="permission()">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4" *ngIf="avaliacoes.length < 1" style="background-color: red; color: white; font-weight: bold;"> Nenhum registro encontrado</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="detalhes" tabindex="-1" role="dialog" aria-labelledby="altModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-max modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title" id="altModalLabel">Detalhes da Avaliação</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row justify-content-md-center">
+          <div class="col-xs-12 col-md-4 tbl-info">
+            <div class="col-12 text-center tag-title">
+              <label for="">Medidas</label>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-6">
+                <label for="">Altura</label>
+                <input type="text" [(ngModel)]="avaliacao.altura">
+              </div>
+              <div class="col-6">
+                <label for="">Peso</label>
+                <input type="text" [(ngModel)]="avaliacao.peso">
+              </div>
+              <div class="col-6">
+                <label for="">Imc</label>
+                <input type="text" [(ngModel)]="avaliacao.imc">
+              </div>
+              <div class="col-6">
+                <label for="">%Gordura</label>
+                <input type="text" [(ngModel)]="avaliacao.pGordura">
+              </div>
+              <div class="col-6">
+                <label for="">Torax</label>
+                <input type="text" [(ngModel)]="avaliacao.torax">
+              </div>
+              <div class="col-6">
+                <label for="">Cintura</label>
+                <input type="text" [(ngModel)]="avaliacao.cintura">
+              </div>
+              <div class="col-6">
+                <label for="">Abdomem</label>
+                <input type="text" [(ngModel)]="avaliacao.abdomem">
+              </div>
+              <div class="col-6">
+                <label for="">Quadril</label>
+                <input type="text" [(ngModel)]="avaliacao.quadril">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-2 tbl-info">
+            <div class="col-12 text-center tag-title">
+              <label for="">Direita</label>
+            </div>
+            <div class="col-12">
+              <label for="">Braço</label>
+              <input type="text" [(ngModel)]="avaliacao.bracoDireito">
+            </div>
+            <div class="col-12">
+              <label for="">Antibraço</label>
+              <input type="text" [(ngModel)]="avaliacao.antibracoDireito">
+            </div>
+            <div class="col-12">
+              <label for="">Coxa</label>
+              <input type="text" [(ngModel)]="avaliacao.coxaDireita">
+            </div>
+            <div class="col-12">
+              <label for="">Panturrilha</label>
+              <input type="text" [(ngModel)]="avaliacao.panturrilhaDireita">
+            </div>
+          </div>
+          <div class="d-xs-none col-3 text-center">
+            <img src="../../../../../assets/img/ch.png" alt="">
+          </div>
+          <div class="col-xs-12 col-md-2 tbl-info">
+            <div class="col-12 text-center tag-title">
+              <label for="">Esquerda</label>
+            </div>
+            <div class="col-12">
+              <label for="">Braço</label>
+              <input type="text" [(ngModel)]="avaliacao.bracoEsquerdo">
+            </div>
+            <div class="col-12">
+              <label for="">Antibraço</label>
+              <input type="text" [(ngModel)]="avaliacao.antibracoEsquerdo">
+            </div>
+            <div class="col-12">
+              <label for="">Coxa</label>
+              <input type="text" [(ngModel)]="avaliacao.coxaEsquerda">
+            </div>
+            <div class="col-12">
+              <label for="">Panturrilha</label>
+              <input type="text" [(ngModel)]="avaliacao.panturrilhaEsquerda">
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="col-12 text-center" *ngIf="permission()">
+          <button type="button" class="btn btn-outline-success" (click)="confirmSave()">Salvar</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

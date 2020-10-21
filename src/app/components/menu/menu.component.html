@@ -1,0 +1,42 @@
+<div *ngIf="menus !== undefined">
+    <div *ngIf="menus === undefined" class="contentChart">
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
+    <div *ngFor="let menu of menus" class="menu">
+        <a [routerLink]="[menu.url]">
+            <button class="btn btn-{{ menu.button }} btn-sm btn-block sombra-btn" type="button">
+                <i class="{{ menu.img }}"></i>
+                <span> {{ menu.titulo }}</span>
+            </button>
+        </a>
+        <hr />
+    </div>
+</div>
+
+<div *ngIf="menusGroup !== undefined">
+    <div id="menuGroup">
+        <div *ngFor="let menu of menusGroup" class="menu">
+            <a class="card-link" data-toggle="collapse" href="#{{menu.titulo}}">
+                <button type="button" class="btn btn-{{ menu.button }} btn-sm btn-block sombra-btn">
+                    {{ menu.titulo }}
+                    <i class="{{menu.img}}"></i>
+                </button>
+            </a>
+            <div id="{{ menu.titulo }}" class="collapse menu--option" data-parent="#menuGroup">
+                <div *ngFor="let option of menu.options" class="menu--option-item">
+                    <button class="btn btn-{{ option.button }} btn-sm btn-block sombra-btn" type="button"
+                        [disabled]="!option.ativo" (click)="goTo(option.url)">
+                        <i class="{{ option.img }}"></i>
+                        <span> {{ option.titulo }}</span>
+                        <span tooltip="Não disponível" flow="left">
+                            <i *ngIf="!option.ativo" class="fas fa-exclamation-circle" style="color:red;"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <hr style="margin: 5px; padding: 1px;"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div id="mySidenav" class="sidenav" style="z-index: 100;" *ngIf="!auth.getPermission('ROLE_ALUNO_DFIT')">
+  <ik-menu [menusGroup]="menusGroup"></ik-menu>
+</div>
+
+
+<div id="main">
+    <div>
+        <app-topo></app-topo>
+    </div>
+
+    <div style="margin: auto">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div>
+        <app-rodape></app-rodape>
+    </div>
+</div>

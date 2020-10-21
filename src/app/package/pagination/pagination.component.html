@@ -1,0 +1,48 @@
+<!--PAGINAÇÃO-->
+<div class="box-footer clearfix" *ngIf="pages !=undefined">
+  <ul class="pagination justify-content-center">
+
+    <li class="page-item" *ngIf=" page+1 != 1" title="primeiro">
+      <a href="#" (click)="setPage(0, $event)" class="page-link">
+        <span aria-hidden="true" class="fa fa-fast-backward"></span>
+      </a>
+    </li>
+
+    <li class="page-item d-none d-sm-block" *ngIf="page+1 !=1" title="anterior">
+      <a href="" (click)="setPreviousPage($event)" class="page-link">
+        <span aria-hidden="true" class="fa fa-backward"></span>
+      </a>
+    </li>
+
+    <li *ngFor="let p of pages; let i = index" [ngClass]="{'active': p-1 === page}" class="page-item">
+      <a href="#" (click)="setPage(p-1, $event)" class="page-link">
+        {{p}}
+      </a>
+    </li>
+    <li class="page-item disabled" *ngIf="lastItem != totalPages && lastItem + 1 != totalPages">
+        <a href="#" class="page-link">
+            ...
+        </a>
+    </li>
+    <li class="page-item" *ngIf="lastItem != totalPages">
+        <a href="#" (click)="setPage(totalPages-1, $event)" class="page-link">
+          {{totalPages}}
+        </a>
+    </li>
+
+    <li class="page-item d-none d-sm-block" *ngIf=" page + 1 != lastItem" title="próximo">
+      <a href="" (click)="setNextPage($event)" class="page-link">
+        <span aria-hidden="true" class="fa fa-forward"></span>
+      </a>
+    </li>
+    <li class="page-item" *ngIf=" page + 1 != lastItem" title="último">
+      <a href="#" (click)="setPage(totalPages-1, $event)" class="page-link">
+        <span aria-hidden="true" class="fa fa-fast-forward"></span>
+      </a>
+    </li>
+  </ul>
+  <p>Total de registros: <strong>{{ totalElements }}</strong>,
+    pág. <strong>{{ page +1 }}</strong>
+    de <strong>{{ totalPages }}</strong>.</p>
+</div>
+<!--PAGINAÇÃO-->

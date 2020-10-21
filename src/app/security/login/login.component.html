@@ -1,0 +1,36 @@
+<div class="container" style="margin: 20%,auto;">
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-center">
+
+      <div class="card-transparente" style="width: 20rem; margin-top: 100px;">
+        <div class="card-login" style="background-color: black;">
+          <div class="card-title">
+              <span class="logo-text"></span><span class="logo-text-sec"></span>
+              <!--img src="./../../../assets/img/logo_ac_red.png" alt="akademy_logo" class="img-responsive img-thumbnail" /-->
+          </div>
+
+          <form [formGroup]="formulario" (ngSubmit)="login()">
+            <div class="form-group">
+              <input type="email" aria-label="email" class="form-control" placeholder="E-mail"
+                formControlName="username">
+              <valid-msg [control]="formulario.controls['username']"></valid-msg>
+            </div>
+            <div class="form-group">
+              <input type="password" aria-label="senha" class="form-control" placeholder="Senha"
+                formControlName="password">
+              <valid-msg [control]="formulario.controls['password']"></valid-msg>
+            </div>
+            <div class="toolbar">
+              <button type="submit" class="btn btn-primary btn-sm btn-block border-l border-r sombra-btn"
+                [disabled]="!formulario.valid">Entrar</button>
+            </div>
+          </form>
+          <hr />
+          <p class="small text-danger text-center" *ngIf="message">{{message}}</p>
+          <hr />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

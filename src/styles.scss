@@ -1,0 +1,137 @@
+@import 'assets/scss/base';
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+    border: 1px solid $color-danger;
+    border-left: 5px solid $color-danger;
+}
+
+.form-group > label.ng-invalid.ng-touched {
+    color: 1px solid $color-danger;
+}
+
+.form-group {
+    margin-bottom: 1px !important;
+}
+
+.form-control {
+  padding: 0 16px;
+}
+
+input,
+select {
+    margin: 0;
+    max-height: 30px !important;
+    font-family: Roboto,sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    background-color: #fff;
+    border: 1px solid #b6bdbf;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 8px 0 rgba(0,0,0,.1);
+    padding: 0 16px;
+    width: 100%;
+}
+/** CUSTOM SELECT **/
+select,
+select[multiple] {
+    border: none;
+    border: 1px solid #b6bdbf;
+    overflow: auto;
+    height: 30px;
+    margin-bottom: 5px;
+}
+select {
+    border-radius: 10px;
+}
+select[multiple] {
+    background-color: whitesmoke;
+}
+
+select > option:nth-child(even) {
+    background-color: #89d9e7;
+    font-weight: bold;
+}
+select > option:nth-child(odd) {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/** CUSTOM SELECT**/
+label {
+    padding-left: 1px;
+}
+
+label,
+legend {
+    font-weight: bold;
+    font-style: italic;
+    padding: 1px;
+    margin: 1px;
+}
+
+select,
+input {
+    overflow: hidden !important;
+    height: 26px !important;
+}
+
+fieldset {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: solid 1px gray;
+}
+
+legend {
+    font-size: 14px;
+}
+
+
+.search-bar {
+    margin-top: 1px;
+    margin-right: 1px;
+    max-width: 200px;
+    max-height: 24px;
+    font-size: 12px;
+    font-style: italic;
+    color: rgb(0, 0, 0);
+    border-radius: 30px;
+}
+
+.search-bar:focus {
+    max-width: 200px;
+    transition: 0.8s;
+}
+
+.search-input {
+    padding: 0;
+    margin: 1px;
+    max-height: 24px;
+    font-size: 12px;
+    max-width: 50px;
+    border-radius: 30px;
+}
+
+.margin-rl {
+    margin-left: 3px;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
