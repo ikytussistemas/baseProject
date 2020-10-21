@@ -48,6 +48,7 @@ export class ExerciciosEditComponent extends PageEditBasic<Exercicio, Exercicios
   saveExercicios() {
     this.service.getExercicios().subscribe(response => {
       for (const ex of response) {
+        // tslint:disable-next-line: no-string-literal
         const exer = new Exercicio(null, ex['descricao'], ex['nome'], ex['alvoexercicio'], '');
         this.service.createOrUpdate(exer).subscribe((resp: ResponseApi) => { });
       }
