@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { AuthService } from '../security/auth.service';
 import { Router } from '@angular/router';
+import { HEADER_AUTH } from './settings';
 
 
 @Injectable()
@@ -31,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
       if (req.url.includes('oauth/token')) { // requisição de token
         const authReq = req.clone({
           headers: req.headers
-            .set('Authorization', 'Basic YW5ndWxhcjpAWDFzQW5nMjBJOQ==')
+            .set('Authorization', HEADER_AUTH)
             .set('Content-Type', 'application/x-www-form-urlencoded')
         });
         return next.handle(authReq);

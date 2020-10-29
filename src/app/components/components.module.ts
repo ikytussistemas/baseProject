@@ -6,6 +6,7 @@ import { ModalUserComponent } from './modais/modal-user/modal-user.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './layout/home/home.component';
+import { PackageModule } from '../package/package.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HomeComponent } from './layout/home/home.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    PackageModule,
   ],
 })
 export class ComponentsModule { }
