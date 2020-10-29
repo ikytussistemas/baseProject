@@ -10,7 +10,7 @@ body {
 }
 
 .bg-padrao {
-    background-image: url(./assets/img/bg.jpg);
+    background-image: url(../img/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -24,7 +24,7 @@ body {
 @media only screen and (max-width: 500px),
     (min-device-width: 504px) and (max-device-width: 504px) {
       .bg-padrao {
-        background-image: url(./assets/img/wp_mobile.jpg);
+        background-image: url(../img/wp_mobile.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;

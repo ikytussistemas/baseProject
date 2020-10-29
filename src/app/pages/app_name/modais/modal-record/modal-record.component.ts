@@ -6,6 +6,7 @@ import { ExerciciosService } from 'src/app/services';
 import { ResponseApi, Filters } from 'src/app/shared/model/util';
 import { take } from 'rxjs/operators';
 import { ToolsService } from 'src/app/services/util';
+import { AuthService } from 'src/app/security/auth.service';
 
 @Component({
   selector: 'modal-record',
@@ -26,7 +27,7 @@ export class ModalRecordComponent implements OnInit {
   filter = new Filters();
 
   constructor(
-    private tools: ToolsService,
+    private auth: AuthService,
     private confirm: ConfirmService,
     private exercicioService: ExerciciosService,
   ) { }
@@ -84,6 +85,6 @@ export class ModalRecordComponent implements OnInit {
   }
 
   permission(permission?: string) {
-    return this.tools.getPermission(permission);
+    return this.auth.getPermission(permission);
   }
 }

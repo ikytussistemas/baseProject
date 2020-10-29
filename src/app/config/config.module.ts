@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { ComponentsModule } from '../components/components.module';
 import { LayoutModule } from '../layout/layout.module';
@@ -12,17 +13,21 @@ import { PackageModule } from '../package/package.module';
     CommonModule,
     ComponentsModule,
     FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+
     LayoutModule,
     PackageModule,
-    ReactiveFormsModule,
   ],
   imports: [
     CommonModule,
     ComponentsModule,
     FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+
     LayoutModule,
     PackageModule,
-    ReactiveFormsModule,
   ]
 })
 export class ConfigModule { }

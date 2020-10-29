@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DfitnessComponent } from './dfitness.component';
-import { AuthGuard } from 'src/app/config/auth.guard';
+import { AuthGuard } from 'src/app/config/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -10,22 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'alunos',
-        loadChildren: () => import('../../pages/dfitness/alunos/alunos.module').then(m => m.AlunosModule),
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'exercicios',
-        loadChildren: () => import('../../pages/dfitness/exercicios/exercicios.module').then(m => m.ExerciciosModule),
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'instrutores',
-        loadChildren: () => import('../../pages/dfitness/instrutores/instrutores.module').then(m => m.InstrutoresModule),
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'dash',
-        loadChildren: () => import('../../pages/dfitness/dashbord/dashbord.module').then(m => m.DashbordModule),
+        loadChildren: () => import('../../pages/app_name/alunos/alunos.module').then(m => m.AlunosModule),
         canActivate: [AuthGuard]
       },
     ]

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 import { Avaliacao } from 'src/app/shared/model/current/moldes/avaliacao';
 import { AuthService } from 'src/app/security/auth.service';
-import { ToolsService } from 'src/app/services/util';
-import { ConfirmService } from 'src/app/package/confirm';
+import { ConfirmService } from 'src/app/package';
 
 @Component({
   selector: 'modal-aval',
@@ -17,7 +17,7 @@ export class ModalAvalComponent implements OnInit {
   avaliacao = this.getNewAv(new Date());
 
   constructor(
-    private tools: ToolsService,
+    private auth: AuthService,
     private confirm: ConfirmService,
   ) { }
 
@@ -72,6 +72,6 @@ export class ModalAvalComponent implements OnInit {
   }
 
   permission(permissions?: string) {
-    return this.tools.getPermission(permissions);
+    return this.auth.getPermission(permissions);
   }
 }

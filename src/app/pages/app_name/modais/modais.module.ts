@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ModalUserComponent } from './modal-user/modal-user.component';
+
 import { ModalRecordComponent } from './modal-record/modal-record.component';
 import { ModalAvalComponent } from './modal-aval/modal-aval.component';
 import { TableTreinoComponent } from './modal-record/table-treino/table-treino.component';
@@ -10,8 +10,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
-  declarations: [ModalAvalComponent, ModalRecordComponent, ModalUserComponent, TableTreinoComponent],
-  exports: [ModalAvalComponent, ModalRecordComponent, ModalUserComponent, TableTreinoComponent],
+  declarations: [ModalAvalComponent, ModalRecordComponent, TableTreinoComponent],
+  exports: [ModalAvalComponent, ModalRecordComponent, TableTreinoComponent],
   imports: [
     CommonModule,
     ComponentsModule,

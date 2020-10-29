@@ -7,9 +7,8 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { HomeComponent } from './home/home.component';
 import { ComponentsModule } from '../components/components.module';
 import { BaseLayoutComponent } from './base-layout/base-layout.component';
-import { HomeAlunoComponent } from './home-aluno/home-aluno.component';
 import { FormsModule } from '@angular/forms';
-import { ModaisModule } from '../pages/dfitness/modais/modais.module';
+import { ModaisModule } from '../pages/app_name/modais/modais.module';
 
 @NgModule({
   imports: [
@@ -21,8 +20,7 @@ import { ModaisModule } from '../pages/dfitness/modais/modais.module';
   ],
   providers: [],
 
-  declarations: [TopoComponent, RodapeComponent, HomeComponent, BaseLayoutComponent, HomeAlunoComponent,
-    ],
+  declarations: [TopoComponent, RodapeComponent, HomeComponent, BaseLayoutComponent],
   exports: [TopoComponent, RodapeComponent, HomeComponent, BaseLayoutComponent]
 })
 export class LayoutModule { }

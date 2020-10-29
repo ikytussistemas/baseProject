@@ -11,7 +11,7 @@ import { defaultLoadingConfig, LOADING_CONFIG_TOKEN } from './loading/loading-co
   entryComponents: [LoadingComponent]
 })
 export class LoadingModule {
-  public static forRoot(config = defaultLoadingConfig): ModuleWithProviders {
+  public static forRoot(config = defaultLoadingConfig): ModuleWithProviders<LoadingModule> {
     return {
       ngModule: LoadingModule,
       providers: [

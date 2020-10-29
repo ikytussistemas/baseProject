@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Treino } from 'src/app/shared/model/current';
 import { ToolsService } from 'src/app/services/util';
+import { AuthService } from 'src/app/security/auth.service';
 
 @Component({
   selector: 'table-treino',
@@ -15,7 +16,7 @@ export class TableTreinoComponent implements OnInit {
   @Output() removeFn = new EventEmitter<{dia: string, treino: Treino} >();
 
   constructor(
-    private tools: ToolsService,
+    private auth: AuthService,
   ) { }
 
   ngOnInit() {
@@ -26,6 +27,6 @@ export class TableTreinoComponent implements OnInit {
   }
 
   permission(permission?: string) {
-    return this.tools.getPermission(permission);
+    return this.auth.getPermission(permission);
   }
 }

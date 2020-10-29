@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 
 import { take } from 'rxjs/operators';
 
-import { CredenciaisDTO } from 'src/app/shared/model/util';
 import { AuthService } from '../auth.service';
-import { ToastService } from '../../package/toast/toast.service';
-import { LoadingService } from '../../package/loading/loading.service';
+import { CredenciaisDTO } from 'src/app/shared/model/util';
+import { LoadingService, ToastService } from 'src/app/package';
 
 @Component({
   selector: 'app-login',

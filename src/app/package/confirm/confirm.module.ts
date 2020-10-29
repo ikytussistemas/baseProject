@@ -11,7 +11,7 @@ import { defaultComponentConfig, COMPONENT_CONFIG_TOKEN } from '../shared/compon
   imports: [CommonModule, OverlayModule]
 })
 export class ConfirmModule {
-  public static forRoot(config = defaultComponentConfig): ModuleWithProviders {
+  public static forRoot(config = defaultComponentConfig): ModuleWithProviders<ConfirmModule> {
     return {
       ngModule: ConfirmModule,
       providers: [

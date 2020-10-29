@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from './services';
 import { SwUpdate } from '@angular/service-worker';
 
 @Component({
@@ -8,7 +7,6 @@ import { SwUpdate } from '@angular/service-worker';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Designer Fitness';
 
   constructor(
     private swUpdate: SwUpdate,

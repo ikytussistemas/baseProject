@@ -9,13 +9,9 @@ import { map, expand } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ImageService {
-
   private compressedImages = [];
 
-  constructor(
-    private storage: AngularFireStorage
-  ) {
-  }
+  constructor( private storage: AngularFireStorage ) { }
 
   processImage(data: FileList): Observable<any> {
     return this.recursiveCompress(data[0], 0, data).pipe(

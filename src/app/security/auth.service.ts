@@ -7,7 +7,7 @@ import { take } from 'rxjs/operators';
 
 import { CredenciaisDTO } from '../shared/model/util/credenciais-dto';
 import { environment } from '../../environments/environment';
-import { ToastService } from '../package/toast/toast.service';
+import { ToastService } from '../package';
 
 const jwtHelper = new JwtHelperService();
 
@@ -66,7 +66,6 @@ export class AuthService {
 
   isAccesTokenInvalid() {
     const token = localStorage.getItem('token');
-
     return !token || jwtHelper.isTokenExpired(token);
   }
 
@@ -77,35 +76,33 @@ export class AuthService {
 
   private getToken() {
     const token = localStorage.getItem('token');
-
-    if (token) {
-      this.storageToken(token);
-    }
+    if (token) { this.storageToken(token); }
   }
 
-  getPermission(permission: string) {
-    return this.jwtPayload && this.jwtPayload.authorities.includes(permission);
-  }
-
-  getAnyPermission(roles: []) {
-    for (const role of roles) {
-      if (this.getPermission(role)) {
+  getPermission(permissions?: string): boolean {
+    const finalPermissions = (permissions !== undefined) ? [permissions] : ['ROLE_ADM_DFIT', 'ROLE_PROF_DFIT'];
+    for (const permission of finalPermissions) {
+      if (this.jwtPayload && this.jwtPayload.authorities.includes(permission)) {
         return true;
       }
     }
     return false;
   }
 
-  errorResponse(error: HttpErrorResponse) {
+  getAnyPermission(roles: []) {
+    for (const role of roles) {
+      if (this.getPermission(role)) { return true; }
+    }
+    return false;
+  }
 
+  errorResponse(error: HttpErrorResponse) {
     if (error.status === 400) {
       const descript: string = error.error;
       if (descript.includes('invalid_grant')) {
         return 'Usuário ou senha inválida!!';
       }
     }
-
     return `Error: ${error.error} - Status: ${error.status}`;
   }
-
 }

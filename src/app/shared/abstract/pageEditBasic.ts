@@ -8,9 +8,7 @@ import { empty } from 'rxjs';
 import { EstadoBr, Cidade, Endereco, Filters, ResponseApi } from '../model/util';
 import { ConsultaCepService, BaseService, ImageService, ErrorHandlerService } from 'src/app/services/util';
 import { AuthService } from 'src/app/security/auth.service';
-import { LoadingService } from 'src/app/package/loading';
-import { ToastService } from 'src/app/package/toast';
-import { ConfirmService } from '../../package/confirm/confirm.service';
+import { ConfirmService, LoadingService, ToastService } from 'src/app/package';
 import { User } from '../model/current';
 
 export abstract class PageEditBasic<T extends {id: string}, S extends BaseService<{ id: string }>> implements OnInit {

@@ -2,11 +2,9 @@ import { Injector, OnInit } from '@angular/core';
 
 import { take } from 'rxjs/operators';
 
-import { ConfirmService } from 'src/app/package/confirm';
 import { BaseService, ErrorHandlerService } from 'src/app/services/util';
 import { AuthService } from 'src/app/security/auth.service';
-import { LoadingService } from 'src/app/package/loading';
-import { ToastService } from 'src/app/package/toast';
+import { ConfirmService, LoadingService, ToastService } from 'src/app/package';
 import { Filters, ResponseApi } from 'src/app/shared/model/util';
 
 export abstract class PageListBasic<T extends { id: string }, S extends BaseService<{ id: string }>> implements OnInit {

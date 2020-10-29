@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
-import { AuthService } from 'src/app/security/auth.service';
 import { LoadingService, OpcaoMenu } from 'src/app/package';
-import { EmpresasService } from 'src/app/services';
 import { MenuGroup } from 'src/app/package/menu/menu.component';
-
+import { AuthService } from 'src/app/security/auth.service';
+import { EmpresasService } from 'src/app/services';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
@@ -105,3 +103,4 @@ export class HomeComponent implements OnInit {
     }, 60000 * 18);
   }
 }
+

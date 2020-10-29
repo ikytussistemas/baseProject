@@ -21,11 +21,11 @@ import { LayoutModule } from './layout/layout.module';
 import { PackageModule } from './package/package.module';
 import { ConfirmModule } from './package/confirm/confirm.module';
 import { LoadingModule } from './package/loading/loading.module';
-import { ToastModule } from './package/toast/toast.module';
 import { SecurityModule } from './security/security.module';
+import { ToastModule } from './package/toast/toast.module';
+import { UpperDirective } from './package/directives/uppercase.directive';
 
 import { environment } from '../environments/environment';
-import { UpperDirective } from './components/directives/uppercase.directive';
 
 export function tokenGetter() {
   return localStorage.getItem('token');

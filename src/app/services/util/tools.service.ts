@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Subject, Observable } from 'rxjs';
-import { AuthService } from 'src/app/security/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,6 @@ export class ToolsService {
   private statusConexao$ = new Subject<boolean>();
 
   constructor(
-    private auth: AuthService,
     private router: Router,
   ) {
     window.addEventListener('online', () => this.atualizaStatusConexao());
@@ -42,16 +41,6 @@ export class ToolsService {
       email += base.substring(rnum, rnum + 1);
     }
     return email + empresa;
-  }
-
-  getPermission(permissions?: string): boolean {
-    const finalPermissions = (permissions !== undefined) ? [permissions] : ['ROLE_ADM_DFIT', 'ROLE_PROF_DFIT'];
-    for (const permission of finalPermissions) {
-      if (this.auth.getPermission(permission)) {
-        return true;
-      }
-    }
-    return false;
   }
 
   goTo(url: string) {
