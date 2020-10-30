@@ -8,6 +8,7 @@ import { take } from 'rxjs/operators';
 import { CredenciaisDTO } from '../shared/model/util/credenciais-dto';
 import { environment } from '../../environments/environment';
 import { ToastService } from '../package';
+import { DEFAULT_PERMISSIONS } from '../config/settings';
 
 const jwtHelper = new JwtHelperService();
 
@@ -80,7 +81,7 @@ export class AuthService {
   }
 
   getPermission(permissions?: string): boolean {
-    const finalPermissions = (permissions !== undefined) ? [permissions] : ['ROLE_ADM_DFIT', 'ROLE_PROF_DFIT'];
+    const finalPermissions = (permissions !== undefined) ? [permissions] : DEFAULT_PERMISSIONS;
     for (const permission of finalPermissions) {
       if (this.jwtPayload && this.jwtPayload.authorities.includes(permission)) {
         return true;

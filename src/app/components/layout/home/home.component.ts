@@ -27,33 +27,9 @@ export class HomeComponent implements OnInit {
   }
 
   changeMenu() {
-
-    if (this.auth.jwtPayload.authorities.includes('ROLE_ALUNO_DFIT')) {
-      this.menusGroup.push(...this.menuALUNODFIT());
-    }
-    if (this.auth.jwtPayload.authorities.includes('ROLE_DIR')) {
-      this.menusGroup.push(...this.menuADMDFIT());
-    }
     if (this.auth.jwtPayload.authorities.includes('ROLE_ADM_DFIT')) {
       this.menusGroup.push(...this.menuADMDFIT());
     }
-    if (this.auth.jwtPayload.authorities.includes('ROLE_PROF_DFIT')) {
-      this.menusGroup.push(...this.menuPROFDFIT());
-    }
-    if (this.auth.jwtPayload.authorities.includes('ROLE_DASH_DFIT')) {
-      this.menusGroup.push(...this.menuDash());
-    }
-  }
-
-  menuALUNODFIT() {
-    return [
-      new MenuGroup('Configurações', 'fas fa-cogs', 'success', [
-        new OpcaoMenu('Perfil', 'far fa-address-card', 'dark', '/academus/faculdades', false),
-      ]),
-      new MenuGroup('outros', 'fas fa-server', 'danger', [
-        new OpcaoMenu('Alunos', 'fas fa-user-graduate', 'primary', '/academus/alunos', false),
-      ]),
-    ];
   }
 
   menuADMDFIT() {
@@ -61,7 +37,7 @@ export class HomeComponent implements OnInit {
       new MenuGroup('Sistema', 'fas fa-sitemap', 'primary', [
         new OpcaoMenu('Perfil', 'fas fa-id-card', 'dark', '/academus/faculdades', false),
         new OpcaoMenu('Configurações', 'fas fa-cogs', 'success', '/academus/faculdades', false),
-        new OpcaoMenu('DashBoard', 'fas fa-cogs', 'warning', '/dfit/dash', true),
+        new OpcaoMenu('Example', 'fas fa-cogs', 'warning', '/main/example', true),
       ]),
       new MenuGroup('Cadastros', 'fas fa-server', 'danger', [
         new OpcaoMenu('Alunos', 'fas fa-id-badge', 'primary', '/dfit/alunos', true),
@@ -72,25 +48,6 @@ export class HomeComponent implements OnInit {
         new OpcaoMenu('Sites úteis', 'fas fa-link', 'primary', 'http://lattes.cnpq.br/', false),
         new OpcaoMenu('Cálculadora IMC', 'fas fa-clock', 'info', '/academus/funcionarios', false),
       ])
-    ];
-  }
-
-  menuPROFDFIT() {
-    return [
-      new MenuGroup('Configurações', 'fas fa-cogs', 'success', [
-        new OpcaoMenu('Perfil', 'far fa-address-card', 'dark', '/academus/faculdades', false),
-      ]),
-      new MenuGroup('alunos', 'fas fa-server', 'danger', [
-        new OpcaoMenu('DashBoard', 'fas fa-cogs', 'warning', '/dfit/dash', true),
-      ]),
-    ];
-  }
-
-  menuDash() {
-    return [
-      new MenuGroup('DashBoard', 'fas fa-cogs', 'success', [
-        new OpcaoMenu('DashBoard', 'fas fa-cogs', 'warning', '/dfit/dash', true),
-      ]),
     ];
   }
 

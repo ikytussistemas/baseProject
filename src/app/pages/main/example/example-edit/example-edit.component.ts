@@ -30,7 +30,7 @@ export class ExampleEditComponent extends PageEditBasic<Person, PersonService> {
     private tools: ToolsService,
     private userService: UserService,
   ) {
-    super(injector, personService, 'alunos', '/dfit/alunos');
+    super(injector, personService, 'alunos', '/main/example');
   }
 
   async formConstructorById() {
